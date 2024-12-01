@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+    <title>Lotto Number Generator</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Lotto Number Generator</h1>
+        <p>Generate your lucky lotto numbers:</p>
+        <button id="generateButton">Generate Numbers</button>
+        <div id="result"></div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const generateButton = document.getElementById("generateButton");
+            const resultDiv = document.getElementById("result");
+
+            generateButton.addEventListener("click", function () {
+                const lottoNumbers = generateLottoNumbers();
+                resultDiv.textContent = "Lotto Numbers: " + lottoNumbers.join(", ");
+            });
+
+            function generateLottoNumbers() {
+                const numbers = [];
+
+                while (numbers.length < 6) {
+                    const randomNumber = Math.floor(Math.random() * 49) + 1;
+                    if (!numbers.includes(randomNumber)) {
+                        numbers.push(randomNumber);
+                    }
+                }
+
+                return numbers;
+            }
+        });
+    </script>
+</body>
+</html>
